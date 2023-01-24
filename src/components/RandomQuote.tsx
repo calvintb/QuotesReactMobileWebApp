@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
    
-interface Quote {
+export interface Quote {
+   _id: string;
    content: string;
    author: string;
 }
 
 
 export const RandomQuote = () => {
-   const [quote, setQuote] = useState<Quote>();
+   const [quote, setQuote] = useState<Quote|null>(null);
    const [isLoaded, setIsLoaded] = useState(false);
    const [error, setError] = useState(null);
 
@@ -18,26 +19,29 @@ export const RandomQuote = () => {
          .then((data) => {
             console.log(data);
             setIsLoaded(true);
-            saveQuote(data);
+            setQuote(data);
          })
          .catch(setError);
    }, []);
 
 
-   const saveQuote = ((data)=>{
-      const quote: Quote = {
-         content: data.content,
-         author: data.author
-      };
-      setQuote(quote);
-   });
+   // const saveQuote = ((data:Quote)=>{
+   //    const quote: Quote = {
+   //       content: data.content,
+   //       author: data.author
+   //    };
+   //    setQuote(quote);
+   // });
 
    
-   if (error) {
-    return <p>An error occurred {console.log(error)}</p>
-}  else if (!isLoaded) {
+if (error) {
+      console.log(error)
+    return <div>An error occurred {error}</div>;
+      
+}  
+else if (!isLoaded) {
     return <div>Loading...</div>;
-} else {
+} else if (quote){
    return (
      <div className="App">
          <div>
@@ -45,5 +49,4 @@ export const RandomQuote = () => {
         </div>
      </div>
    );
- }
-}
+ } return(<div>Easter egg</div>)}

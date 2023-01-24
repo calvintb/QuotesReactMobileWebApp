@@ -1,45 +1,34 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useEffect} from "react";
+import { pageName, setPageName } from "../App";
+import { Quote } from "../components/RandomQuote";
 
-interface Quote {
-    id: number;
-    content: string;
-}
+export const [search, setSearch] = useState("");
 
-export const QuotesPage = () => {
-    const [quotes, setQuotes] = useState<Quote[]>([]);
+export const QuotesPage = () =>{
     const [isLoaded, setIsLoaded] = useState(false);
+    const [quotes, setQuotes] = useState<Quote[]>([]);
     const [error, setError] = useState(null);
-
-
+    
     useEffect(() => {
-        fetch(`https://api.quotable.io/search/quotes?query=${search}&fields=author`)
-           .then((response) => response.json())
-           .then((data) => {
-              console.log(data);
-              setIsLoaded(true);
-              setQuotes(data.results);
+    console.log(search);
+    fetch(`https://usu-quotes-mimic.vercel.app/api/search?query=${search}`)
+       .then((response) => response.json())
+       .then((data) => {
+          console.log(data);
+          setIsLoaded(true);
+          setQuotes(data.results);
 
-           })
-           .catch(setError);
-     }, [search]);
+       })
+       .catch(setError);
+ }, []);
 
-     function findQuotes(author: string){
-        setSearch(author);
-    }
-
-
-    return(
-        <div>
-            {
-            quotes.map((quote) => (
-                <div key={quote.id}>
-                    {quote.content}
-                </div>
-            ))
-            }
+    return (<div>
+     {
+    quotes.map((quote) => (
+        <div className='quote' key={quote._id}>
+            {quote.content}
         </div>
-    );
-
-
+    ))
+    }
+</div>)
 }
