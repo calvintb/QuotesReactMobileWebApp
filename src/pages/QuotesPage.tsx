@@ -1,11 +1,14 @@
 import { useState, useEffect} from "react";
-import { pageName, setPageName } from "../App";
+import { changePage } from "../App";
 import { Quote } from "../components/RandomQuote";
 
-export const [search, setSearch] = useState("");
+export var search:string;
+
+export const setSearch = (new_search: string) => {
+    search = new_search;
+}
 
 export const QuotesPage = () =>{
-    const [isLoaded, setIsLoaded] = useState(false);
     const [quotes, setQuotes] = useState<Quote[]>([]);
     const [error, setError] = useState(null);
     
@@ -14,8 +17,6 @@ export const QuotesPage = () =>{
     fetch(`https://usu-quotes-mimic.vercel.app/api/search?query=${search}`)
        .then((response) => response.json())
        .then((data) => {
-          console.log(data);
-          setIsLoaded(true);
           setQuotes(data.results);
 
        })

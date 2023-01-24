@@ -1,14 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { WelcomePage } from './pages/WelcomePage';
 import { QuotesPage } from './pages/QuotesPage';
 
-export const [pageName, setPageName] = useState("toasts");
+
+export var pageName: string = "welcome-page";
+
+export var changePage = (new_page:string) => {
+  pageName = new_page
+  console.log(pageName);
+}
 
 export const App = () => {
-  console.log(pageName);
+  [pageName, changePage] = useState("welcome-page")
+
   return (
     <div>
-      <button onClick={() => setPageName("welcome-page")}>Home</button>
+      <button onClick={() => changePage("welcome-page")}>Home</button>
       <div>
         {pageName === "welcome-page" && <WelcomePage />}
         {pageName === "quotes-page" && <QuotesPage />}
