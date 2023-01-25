@@ -43,7 +43,7 @@ else if (!isLoaded) {
     return <div>Loading...</div>;
 } else if (quote){
    return (
-     <div className="App">
+     <div className="quote">
          <div>
             {quote.content} - {quote.author}
         </div>

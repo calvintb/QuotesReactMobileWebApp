@@ -23,7 +23,7 @@ export const QuotesPage = () =>{
        .catch(setError);
  }, []);
 
-    return (<div>
+    return (<div> <center><h1>Quote Results from: {search}</h1></center>
      {
     quotes.map((quote) => (
         <div className='quote' key={quote._id}>

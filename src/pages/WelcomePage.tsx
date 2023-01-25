@@ -4,10 +4,10 @@ import { RandomQuote } from "../components/RandomQuote";
 
 export const WelcomePage = () =>{
     return (
-        <div>
-            <h1>Welcome</h1>
-            <div className="title"><h1>Quote Search</h1></div>
-                <div id="search">
+        <div className="container">
+            <center><h1>Welcome to <br/>Quote Search</h1></center>
+            
+
                     <label className="input-label">
                         <input type="text" name="quote-search" placeholder="Albert Einstein" onKeyDown={(event) => {
                             console.log(event);
@@ -16,12 +16,11 @@ export const WelcomePage = () =>{
                             }
                         }
 
-             } onChange={(e => setSearch(e.target.value))}/>
-             <input type="button" name="submit" value="submit" onClick={(e)=>{changePage('quotes-page')}}/>
-         </label>
-    </div>
-            <RandomQuote />
-            
+                } onChange={(e => setSearch(e.target.value))}/>
+                <input type="button" name="submit" value="Submit" onClick={(e)=>{changePage('quotes-page')}}/>
+            </label>
+                <RandomQuote />
+
         </div>
     );
 }
