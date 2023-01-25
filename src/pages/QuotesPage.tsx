@@ -27,7 +27,7 @@ export const QuotesPage = () =>{
      {
     quotes.map((quote) => (
         <div className='quote' key={quote._id}>
-            {quote.content}
+            {quote.content} - {quote.author}
         </div>
     ))
     }
