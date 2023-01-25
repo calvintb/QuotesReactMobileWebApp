@@ -12,7 +12,7 @@ export const WelcomePage = () =>{
                         <input type="text" name="quote-search" placeholder="Albert Einstein" onKeyDown={(event) => {
                             console.log(event);
                             if(event.code === 'Enter'){
-                            changePage('quote-page');
+                            changePage('quotes-page');
                             }
                         }
 
