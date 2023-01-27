@@ -4,7 +4,15 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
+  height: 100%;
+}
+* {
+  box-sizing: border-box;
 } 
+body, #root{
+  margin: 0px;
+  height: 100vh;
+}
 .container {
   display:flex;
   flex-direction: column;
@@ -12,7 +20,7 @@
   margin: auto;
   padding: 10px;
   justify-content: center;
-
+  height: 100vh;
 }
 .quote {
   background-color: rgb(170, 75, 75);
@@ -24,4 +32,7 @@
 	border-radius: 7px;
 	border-width: 1px;
 	border-style: solid;
+} 
+div:has(input){
+  padding: 10px;
 }

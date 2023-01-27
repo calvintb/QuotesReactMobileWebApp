@@ -16,7 +16,7 @@ export const App = () => {
   return (
     <div>
       <button onClick={() => changePage("welcome-page")}>Home</button>
-      <div>
+      <div className='container'>
         {pageName === "welcome-page" && <WelcomePage />}
         {pageName === "quotes-page" && <QuotesPage />}
       </div>
